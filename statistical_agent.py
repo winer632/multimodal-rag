@@ -1,4 +1,3 @@
-import lazyllm
 from lazyllm import pipeline
 from lazyllm.tools.agent import ReactAgent
 
