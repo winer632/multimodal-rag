@@ -1,6 +1,6 @@
 --index-url https://pypi.tuna.tsinghua.edu.cn/simple
 --trusted-host pypi.tuna.tsinghua.edu.cn
-/home/wangxinxin/detectron2
+git+https://github.com/facebookresearch/detectron2
 boto3==1.28.43
 Brotli==1.1.0
 fast-langdetect==0.3.2
