@@ -1,0 +1,19 @@
+--index-url https://pypi.tuna.tsinghua.edu.cn/simple
+--trusted-host pypi.tuna.tsinghua.edu.cn
+/home/wangxinxin/detectron2
+boto3==1.28.43
+Brotli==1.1.0
+fast-langdetect==0.3.2
+pdfminer.six==20231228
+PyMuPDF==1.24.9
+unimernet==0.2.1
+ultralytics
+paddleocr==2.7.3
+paddlepaddle==3.0.0b1
+pypandoc
+struct-eqtable==0.1.0
+doclayout-yolo==0.0.3
+magic-pdf==1.0.1
+pyopenssl==23.2.0
+rapid_table==0.3.0
+rapidocr_onnxruntime
