@@ -28,6 +28,8 @@ pip install -v triton==3.1.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install transformers==4.45.2 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 pip install infinity-emb -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+pip install prometheus_fastapi_instrumentator -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 # 配置文件
@@ -35,12 +37,37 @@ pip install infinity-emb -i https://pypi.tuna.tsinghua.edu.cn/simple
 为避免一些报错，启动应用前需设置好如下环境变量：
 ```
 export LAZYLLM_MODEL_SOURCE=huggingface
+export LAZYLLM_MODEL_SOURCE_TOKEN=xxx
 ```
 由于使用了一些线上的大模型，所以需要配置好key:
 ```
 export LAZYLLM_SENSENOVA_API_KEY=xxx
 export LAZYLLM_SENSENOVA_SECRET_KEY=xxxx
 export LAZYLLM_QWEN_API_KEY=xxx
+```
+
+# 下载的模型保存路径
+
+```
+(base) root@real-105:~/.lazyllm/model/huggingface# pwd
+/root/.lazyllm/model/huggingface
+(base) root@real-105:~/.lazyllm/model/huggingface# conda activate pedia
+(pedia) root@real-105:~/.lazyllm/model/huggingface# 
+(pedia) root@real-105:~/.lazyllm/model/huggingface# 
+(pedia) root@real-105:~/.lazyllm/model/huggingface# tree -L 2
+.
+├── BAAI
+│   ├── bge-m3
+│   └── bge-reranker-large
+└── google
+    └── siglip-so400m-patch14-384
+
+5 directories, 0 files
+(pedia) root@real-105:~/.lazyllm/model/huggingface# du -hsl */*
+4.3G    BAAI/bge-m3
+6.3G    BAAI/bge-reranker-large
+3.3G    google/siglip-so400m-patch14-384
+(pedia) root@real-105:~/.lazyllm/model/huggingface# 
 ```
 
 # VS CODE远程调试的服务器无法连接huggingface和github怎么办
@@ -75,8 +102,8 @@ export LAZYLLM_QWEN_API_KEY=xxx
     Listen 127.0.0.1      # 只允许本地连接 (SSH隧道会从本地连接过来)
     Allow 127.0.0.1       # 允许来自本地的请求
     # DisableViaHeader Yes # 可选，隐藏Via头
-    # ConnectPort 443     # 允许HTTPS的CONNECT方法
-    # ConnectPort 563     # (如果需要其他HTTPS端口)
+    ConnectPort 443       # 允许HTTPS的CONNECT方法
+    ConnectPort 563       # (如果需要其他HTTPS端口)
     ```
     保存并退出。
 *   **启动 `tinyproxy`:**

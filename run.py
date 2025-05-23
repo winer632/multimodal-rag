@@ -47,5 +47,8 @@ def build_paper_assistant():
     return ppl
 
 if __name__ == "__main__":
+    print("Building paper assistant pipeline...")
     main_ppl = build_paper_assistant()
+    print("Pipeline built. Starting WebModule...")
     lazyllm.WebModule(main_ppl, port=23459, static_paths="./images", encode_files=True).start().wait()
+    print("WebModule stopped.") # 这句只有在服务停止后才会打印
